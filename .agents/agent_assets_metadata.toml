@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "tlebGSRlT8_RhK2XkQdfo"
+uri = "file://artifacts/blog/public/author-prakash.png"
+type = "image"
+title = "Professional headshot"

@@ -1,0 +1,494 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: Prakash Knowledge Hub API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: posts
+    description: Blog post operations
+  - name: categories
+    description: Category operations
+  - name: tags
+    description: Tag operations
+  - name: search
+    description: Search operations
+  - name: stats
+    description: Stats and analytics
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /posts:
+    get:
+      operationId: listPosts
+      tags: [posts]
+      summary: List all published posts
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: tag
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: List of posts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PostList"
+    post:
+      operationId: createPost
+      tags: [posts]
+      summary: Create a new blog post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostInput"
+      responses:
+        "201":
+          description: Created post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+
+  /posts/featured:
+    get:
+      operationId: listFeaturedPosts
+      tags: [posts]
+      summary: List featured posts
+      responses:
+        "200":
+          description: List of featured posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+
+  /posts/popular:
+    get:
+      operationId: listPopularPosts
+      tags: [posts]
+      summary: List most viewed posts
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 5
+      responses:
+        "200":
+          description: List of popular posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+
+  /posts/recent:
+    get:
+      operationId: listRecentPosts
+      tags: [posts]
+      summary: List most recent posts
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 6
+      responses:
+        "200":
+          description: List of recent posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+
+  /posts/{slug}:
+    get:
+      operationId: getPost
+      tags: [posts]
+      summary: Get a single post by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+        "404":
+          description: Post not found
+    patch:
+      operationId: updatePost
+      tags: [posts]
+      summary: Update a post
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostUpdate"
+      responses:
+        "200":
+          description: Updated post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+    delete:
+      operationId: deletePost
+      tags: [posts]
+      summary: Delete a post
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deleted
+
+  /posts/{slug}/view:
+    post:
+      operationId: recordView
+      tags: [posts]
+      summary: Increment view count for a post
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: View recorded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewCount"
+
+  /posts/{slug}/like:
+    post:
+      operationId: toggleLike
+      tags: [posts]
+      summary: Toggle like on a post
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Like toggled
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LikeCount"
+
+  /posts/{slug}/related:
+    get:
+      operationId: listRelatedPosts
+      tags: [posts]
+      summary: Get related posts for a given post
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Related posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [categories]
+      summary: List all categories with post count
+      responses:
+        "200":
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+
+  /tags:
+    get:
+      operationId: listTags
+      tags: [tags]
+      summary: List all tags
+      responses:
+        "200":
+          description: List of tags
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tag"
+
+  /search:
+    get:
+      operationId: searchPosts
+      tags: [search]
+      summary: Search posts by title, content, category, or tags
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+
+  /stats/summary:
+    get:
+      operationId: getSiteSummary
+      tags: [stats]
+      summary: Get site-wide summary statistics
+      responses:
+        "200":
+          description: Site summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteSummary"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    Post:
+      type: object
+      required: [id, title, slug, content, category, publishedAt, readingTime, viewCount, likeCount]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        shortDescription:
+          type: ["string", "null"]
+        content:
+          type: string
+        featuredImage:
+          type: ["string", "null"]
+        category:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        externalLinks:
+          type: array
+          items:
+            type: string
+        isFeatured:
+          type: boolean
+        publishedAt:
+          type: string
+          format: date-time
+        readingTime:
+          type: integer
+        viewCount:
+          type: integer
+        likeCount:
+          type: integer
+
+    PostList:
+      type: object
+      required: [posts, total, page, limit]
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: "#/components/schemas/Post"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+
+    PostInput:
+      type: object
+      required: [title, content, category]
+      properties:
+        title:
+          type: string
+          minLength: 1
+        slug:
+          type: ["string", "null"]
+        shortDescription:
+          type: ["string", "null"]
+        content:
+          type: string
+          minLength: 1
+        featuredImage:
+          type: ["string", "null"]
+        category:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        externalLinks:
+          type: array
+          items:
+            type: string
+        isFeatured:
+          type: boolean
+
+    PostUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        shortDescription:
+          type: ["string", "null"]
+        content:
+          type: string
+        featuredImage:
+          type: ["string", "null"]
+        category:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        externalLinks:
+          type: array
+          items:
+            type: string
+        isFeatured:
+          type: boolean
+
+    Category:
+      type: object
+      required: [name, slug, postCount]
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        postCount:
+          type: integer
+
+    Tag:
+      type: object
+      required: [name, slug, postCount]
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        postCount:
+          type: integer
+
+    ViewCount:
+      type: object
+      required: [viewCount]
+      properties:
+        viewCount:
+          type: integer
+
+    LikeCount:
+      type: object
+      required: [likeCount, liked]
+      properties:
+        likeCount:
+          type: integer
+        liked:
+          type: boolean
+
+    SiteSummary:
+      type: object
+      required: [totalPosts, totalViews, totalLikes, categoryCount]
+      properties:
+        totalPosts:
+          type: integer
+        totalViews:
+          type: integer
+        totalLikes:
+          type: integer
+        categoryCount:
+          type: integer

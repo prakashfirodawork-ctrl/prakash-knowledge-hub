@@ -1,0 +1,423 @@
+Build a production-ready SEO-optimized blogging platform called:
+
+PRAKASH KNOWLEDGE HUB
+
+Tagline:
+AI • Web3 • Pi Network • Personal Branding • Digital Growth
+
+Purpose:
+Create a modern blogging and knowledge-sharing platform where Prakash Choudhary can publish articles, tutorials, insights, research reports, ecosystem updates, and educational content.
+
+The design should be heavily inspired by the mobile experience of the Pi Network Blog while remaining original and unique.
+
+---
+
+DESIGN STYLE
+
+Design Inspiration:
+
+- Pi Network Blog
+- Binance Academy
+- CoinTelegraph
+- Medium
+
+Color Palette:
+
+Primary:
+#5E3A99 (Pi Purple)
+
+Secondary:
+#F4AF3D (Pi Gold)
+
+Background:
+#FFFFFF
+
+Dark Mode:
+#121212
+
+Typography:
+
+- Inter
+- Poppins
+
+Design Requirements:
+
+- Mobile First
+- Responsive
+- Fast Loading
+- Modern
+- Premium
+- Minimal
+- SEO Friendly
+
+---
+
+HOMEPAGE
+
+Sticky Header:
+
+Logo:
+Prakash Knowledge Hub
+
+Left:
+Logo
+
+Right:
+Search Icon
+Menu Icon
+
+---
+
+Hero Section
+
+Title:
+Prakash Knowledge Hub
+
+Subtitle:
+Learn. Build. Grow. Impact.
+
+Description:
+
+Practical insights on Artificial Intelligence, Personal Branding, Data Analytics, Web3, Pi Network, Digital Growth, and Education.
+
+Buttons:
+
+- Explore Articles
+- Visit Portfolio
+
+---
+
+Featured Articles Section
+
+Show large featured cards.
+
+Display:
+
+- Featured Image
+- Title
+- Short Description
+- Publish Date
+- Reading Time
+
+---
+
+Categories
+
+Create category cards:
+
+- Pi Network
+- Artificial Intelligence
+- Data Analytics
+- Personal Branding
+- Web3 & Blockchain
+- Digital Growth
+- Education
+- Agri-Tech
+
+---
+
+Latest Articles
+
+Display newest posts first.
+
+Include:
+
+- Featured Image
+- Title
+- Description
+- Category
+- Date
+
+---
+
+Popular Posts
+
+Automatically show most viewed articles.
+
+---
+
+Search Function
+
+Search by:
+
+- Title
+- Category
+- Tags
+- Content
+
+---
+
+BLOG POST CREATION
+
+Create a simple dashboard.
+
+Allow only:
+
+- Featured Image Upload
+- Blog Title
+- Short Description
+- Blog Content
+- External Links
+- Tags
+
+Do NOT allow:
+
+- Video Uploads
+- Audio Uploads
+
+Image formats:
+
+- JPG
+- PNG
+- WEBP
+
+---
+
+BLOG ARTICLE PAGE
+
+Exactly inspired by Pi Blog experience.
+
+Top Section:
+
+Featured Image
+
+Large Title
+
+Author:
+Prakash Choudhary
+
+Date
+
+Reading Time
+
+Share Buttons
+
+Like Button
+
+---
+
+Content Area
+
+Large readable typography
+
+Good spacing
+
+SEO friendly structure
+
+Support:
+
+- Headings
+- Images
+- Links
+- Lists
+- Quotes
+
+---
+
+Related Posts Section
+
+Show:
+
+- Same category posts
+- Recommended articles
+
+---
+
+SEO
+
+Generate automatically:
+
+Meta Title
+
+Meta Description
+
+Open Graph Tags
+
+Twitter Cards
+
+JSON-LD Schema
+
+Canonical URLs
+
+SEO Friendly Slugs
+
+Example:
+
+/blog/pi-launchpad-update
+
+/blog/ai-tools-for-students
+
+/blog/personal-branding-guide
+
+---
+
+Target Keywords
+
+Prakash Choudhary
+
+Prakash Phiroda
+
+AI Educator
+
+Digital Builder
+
+Personal Branding Strategist
+
+Data Analytics Enthusiast
+
+Website Designer
+
+Web3 Advocate
+
+Blockchain Educator
+
+Pi Network Educator
+
+Digital Growth
+
+Rajasthan India
+
+---
+
+Generate:
+
+robots.txt
+
+sitemap.xml
+
+RSS Feed
+
+Structured Data
+
+Breadcrumb Schema
+
+Article Schema
+
+Person Schema
+
+---
+
+AUTHOR PROFILE
+
+Name:
+Prakash Choudhary
+
+Title:
+AI Educator | Digital Builder | Web3 Advocate
+
+Bio:
+
+Helping students, professionals, entrepreneurs, and businesses leverage AI, Data Analytics, Personal Branding, Blockchain, Pi Network, and Digital Growth.
+
+---
+
+SOCIAL LINKS
+
+LinkedIn:
+https://www.linkedin.com/in/prakashphiroda
+
+Instagram:
+https://www.instagram.com/prakashphiroda
+
+Twitter/X:
+https://x.com/PiProtecter
+
+Facebook:
+https://www.facebook.com/prakashphiroda
+
+Portfolio:
+https://prakashfirodawork-ctrl.github.io/Prakash-Identity-Hub
+
+Pi Username:
+@prakashphiroda
+
+---
+
+PI NETWORK REFERRAL SECTION
+
+Add a sticky floating bottom bar similar to the Pi Network download banner.
+
+Always visible on mobile.
+
+Design:
+
+🚀 Join Pi Network
+
+Invited By:
+@prakashphiroda
+
+Button:
+
+Open Pi App
+
+When clicked:
+
+Show instructions:
+
+1. Download Pi Network
+2. Use invitation code:
+   prakashphiroda
+
+Add a copy button for referral code.
+
+---
+
+FOOTER
+
+Sections:
+
+About
+
+Categories
+
+Recent Posts
+
+Quick Links
+
+Connect With Me
+
+Links:
+
+Portfolio
+
+LinkedIn
+
+Instagram
+
+Twitter/X
+
+Facebook
+
+Pi Network
+
+Copyright:
+
+© Prakash Knowledge Hub
+
+---
+
+PERFORMANCE
+
+Target:
+
+95+ SEO
+
+95+ Performance
+
+95+ Accessibility
+
+95+ Best Practices
+
+---
+
+DEPLOYMENT
+
+Project must be:
+
+- Static site compatible
+- GitHub Pages compatible
+- Easy export to GitHub
+- Mobile optimized
+- Production ready
+
+Generate complete website structure, components, pages, SEO setup, and deployment configuration.
